@@ -4,7 +4,7 @@ sys.path.append("..")
 from gensim.models.keyedvectors import KeyedVectors
 from gensim.models import Word2Vec
 
-from everest_nlp.config import word2vec_model_sm_path,word2vec_model_md_path
+from config import word2vec_model_sm_path,word2vec_model_md_path
 class Sabda2Vec():
     def __init__(self,model_name):
         """
@@ -12,34 +12,34 @@ class Sabda2Vec():
         """
         if model_name == "sabda2vec_sm":
             self.model_name = KeyedVectors.load(word2vec_model_sm_path)
-            print("Small model loaded")
+            print("INFO :: Small model loaded")
         elif model_name == "sabda2vec_md":
             self.model_name = KeyedVectors.load(word2vec_model_md_path)
-            print("Medium model loaded")
-        elif model_name == "sabda2vec_lg":
-            try:
-                self.model_name = KeyedVectors.load(word2vec_model_lg_path)
-                print("Large model loaded")
-            except OSError as e:
-                self.model_name = KeyedVectors.load(word2vec_model_md_path)
-                print("Medium model loaded")
-        elif model_name == "fasttext_model":
-            try:
-                self.model_name = KeyedVectors.load(fasttext_model_path)
-                print("Faststext model loaded")
-            except OSError as e:
-                self.model_name = KeyedVectors.load(word2vec_model_md_path)
-                print("Medium model loaded")
-        elif model_name == "nepali_nlp_gensim_model":
-            try:
-                self.model_name == KeyedVectors.load(nepali_nlp_gensim_model_path)
-                print("Nepali nlp model loaded")
-            except OSError as e:
-                self.model_name = KeyedVectors.load(word2vec_model_md_path)
-                print("Medium model loaded")
+            print("INFO :: Medium model loaded")
+        # elif model_name == "sabda2vec_lg":
+        #     try:
+        #         self.model_name = KeyedVectors.load(word2vec_model_lg_path)
+        #         print("Large model loaded")
+        #     except OSError as e:
+        #         self.model_name = KeyedVectors.load(word2vec_model_md_path)
+        #         print("Medium model loaded")
+        # elif model_name == "fasttext_model":
+        #     try:
+        #         self.model_name = KeyedVectors.load(fasttext_model_path)
+        #         print("Faststext model loaded")
+        #     except OSError as e:
+        #         self.model_name = KeyedVectors.load(word2vec_model_md_path)
+        #         print("Medium model loaded")
+        # elif model_name == "nepali_nlp_gensim_model":
+        #     try:
+        #         self.model_name == KeyedVectors.load(nepali_nlp_gensim_model_path)
+        #         print("Nepali nlp model loaded")
+        #     except OSError as e:
+        #         self.model_name = KeyedVectors.load(word2vec_model_md_path)
+        #         print("Medium model loaded")
         else:
             self.model_name = KeyedVectors.load(word2vec_model_sm_path)
-            print("Small model loaded")
+            print("INFO :: Small model loaded")
 
     
     def get_most_similar(self,token,num_of_similar_tokens):
@@ -49,7 +49,7 @@ class Sabda2Vec():
                 num_of_similar_tokens: int
         return: similar_tokens : list of tuples
         """
-        most_similar = self.model_name.most_similar_cosmul(positive=[token], topn=num_of_similar_tokens)
+        most_similar = self.model_name.wv.most_similar_cosmul(positive=[token], topn=num_of_similar_tokens)
         return most_similar
 
     def get_embedding(self,token):
@@ -59,7 +59,7 @@ class Sabda2Vec():
         return: embedding : numpy_array
         """
         try:
-            token_embedding = self.model_name[token]
+            token_embedding = self.model_name.wv[token]
         except KeyError:
             print("The word  does not appear in this model")
         return token_embedding
@@ -72,7 +72,7 @@ class Sabda2Vec():
         return: simalarity_score: float
         """
         try:
-            similarity_score = self.model_name.similarity(token1,token2)
+            similarity_score = self.model_name.wv.similarity(token1,token2)
             return similarity_score
         except KeyError:
             print("One of the word  does not appear in this model")
@@ -89,6 +89,3 @@ if __name__ == "__main__":
     sim2 = s2v_object.get_similarity_between_tokens(test_word_2,test_word_3)
     print("sim",sim)
     print("sim2",sim2)
-    # print("Similarity between {} and {} is {}".format(test_word_1,test_word_2,sim))
-    # print("Similarity between {} and {}".format(test_word_1,test_word_3,sim2))
-    # import pdb;pdb.set_trace()
