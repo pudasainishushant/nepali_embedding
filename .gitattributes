@@ -1,0 +1,4 @@
+sabda2vec/models/sabda_to_vec_model filter=lfs diff=lfs merge=lfs -text
+sabda2vec/models/sabda_to_vec_model_md filter=lfs diff=lfs merge=lfs -text
+sabda2vec/models/sabda_to_vec_model_md.trainables.syn1neg.npy filter=lfs diff=lfs merge=lfs -text
+sabda2vec/models/sabda_to_vec_model_md.wv.vectors.npy filter=lfs diff=lfs merge=lfs -text
