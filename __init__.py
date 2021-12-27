@@ -1,0 +1,1 @@
+from nepali_embedding.downloader import download
