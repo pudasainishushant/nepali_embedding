@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="index.xsl" type="text/xsl"?>
+<everest_nlp_data>
+  <packages>
+    <package id="sabda_to_vec_model" name="Sabda2Vec Model" author="" webpage="" license="MIT License" unzip="0" unzipped_size="63856890" size="45792965" subdir="" url="https://github.com/lappanchappan43/nepali_embedding_data/blob/main/sabda_to_vec_model.zip?raw=true" />
+  </packages>
+</everest_nlp_data>
