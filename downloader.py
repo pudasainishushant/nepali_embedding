@@ -27,12 +27,13 @@ class Package:
         return Package(**xml.attrib)
 
 class Downloader:
-    DEFAULT_URL = '/home/jit/Desktop/SUNIL/nepali_embedding/index.xml'
+    DEFAULT_URL = 'https://raw.githubusercontent.com/pudasainishushant/nepali_embedding/main/index.xml'
 
     def __init__(self) -> None:
         self._url = self.DEFAULT_URL
-        self._tree = et.parse(self._url)
-        self._root = self._tree.getroot()
+        with urlopen(self._url) as xml_file:
+            self._tree = et.parse(xml_file)
+            self._root = self._tree.getroot()
 
     def default_download_dir(self):
         """
