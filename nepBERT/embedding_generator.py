@@ -13,8 +13,6 @@ class NepBERT():
     def get_word_embedding_bert(self,input_text):
         marked_text = " [CLS] " + input_text + " [SEP] "
         tokenized_text = self.tokenizer.tokenize(marked_text)
-        for i, token_str in enumerate(tokenized_text):
-            print (i, token_str)
         indexed_tokens = self.tokenizer.convert_tokens_to_ids(tokenized_text)
         segments_ids = [1] * len(indexed_tokens) 
         
@@ -31,8 +29,6 @@ class NepBERT():
         token_embeddings = torch.stack(hidden_states, dim=0)
         token_embeddings = torch.squeeze(token_embeddings, dim=1)
         token_embeddings = token_embeddings.permute(1,0,2)
-
-
         # Stores the token vectors, with shape [22 x 768]
         token_vecs_sum = []
 
@@ -40,9 +36,7 @@ class NepBERT():
 
         # For each token in the sentence...
         for token in token_embeddings:
-
             # `token` is a [12 x 768] tensor
-
             # Sum the vectors from the last four layers.
             sum_vec = torch.sum(token[-4:], dim=0)
             
@@ -54,8 +48,6 @@ class NepBERT():
 
         marked_text = " [CLS] " + input_sentence + " [SEP] "
         tokenized_text = self.tokenizer.tokenize(marked_text)
-        for i, token_str in enumerate(tokenized_text):
-            print (i, token_str)
         indexed_tokens = self.tokenizer.convert_tokens_to_ids(tokenized_text)
         segments_ids = [1] * len(indexed_tokens) 
         
@@ -67,13 +59,8 @@ class NepBERT():
             outputs = self.model(tokens_tensors, segments_tensors)
             # removing the first hidden state
             # the first state is the input state 
-            # import pdb;pdb.set_trace()
             hidden_states = outputs.hidden_states
             # second_hidden_states = outputs[2]
-        # `hidden_states` has shape [13 x 1 x 22 x 768]
-
-        # import pdb;pdb.set_trace()
-        # `token_vecs` is a tensor with shape [22 x 768]
         token_vecs = hidden_states[-2][0]
 
         # Calculate the average of all 22 token vectors.
@@ -109,7 +96,6 @@ if __name__== "__main__":
     embedding1 = nepbert.get_bert_embedding_sentence(test_sentence,)
     embedding2 = nepbert.get_bert_embedding_sentence(test_sentence_2)
     embedding3 = nepbert.get_bert_embedding_sentence(test_sentence_3)
-    # import pdb;pdb.set_trace()
     cos_dist_different = 1 - cosine(embedding1,embedding2)
     cos_dist_same = 1 - cosine(embedding2,embedding3)
     print("Difference",cos_dist_different)

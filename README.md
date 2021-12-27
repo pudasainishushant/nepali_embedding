@@ -18,13 +18,27 @@ We have developed state of the art models for embedding generation for nepali te
 
 Use this script to get embedding of a word (sabda).
 
+## To generate embedidng of a word/token from custom trained word2vec nepali model
 ```python
 from nepali_embedding.sabda2vec.inference import Sabda2Vec
 sabda2vec_obj = Sabda2Vec(model_name = "sabda2vec_sm")
 #Get embedding of the token 
 embedding = sabda2vec_obj.get_embedding("हार")
-# Get top similar tokens 
-top_similar = sabda2vec_obj.get_most_similar("हार",5)
-# Get similarity between two tokens
-similarity_score = sabda2vec_obj.get_similarity_between_tokens("हार","पराजय")
 ```
+
+## To generate embedidng of a word/token from custom trained doc2vec nepali model
+```python
+from nepali_embedding.bakya2vec.inference import Bakya2Vec
+bakya2vec_obj = Bakya2Vec(model_name = "bakya2vec_sm")
+#Get embedding of the token 
+embedding = bakya2vec_obj.get_embedding("हार")
+```
+
+## To generate embedidng of a word/token from NepBERT model
+```python
+from nepali_embedding.nepBERT.inference import NepBERT
+nepbert = NepBERT()
+#For sentence embedding
+embedding1 = nepbert.get_word_embedding_bert("हार")
+```
+
