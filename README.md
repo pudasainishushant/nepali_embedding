@@ -42,3 +42,5 @@ nepbert = NepBERT()
 embedding1 = nepbert.get_word_embedding_bert("हार")
 ```
 
+PAT
+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
