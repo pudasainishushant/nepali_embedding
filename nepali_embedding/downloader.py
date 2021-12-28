@@ -4,6 +4,7 @@ import itertools
 from urllib.request import urlopen
 import sys
 import zipfile
+from tqdm import tqdm
 
 class Package:
     def __init__(self, id, url, name='', author='', subdir='', **kw):
@@ -68,16 +69,16 @@ class Downloader:
     def _download_package(self, package, dir):
         filename = os.path.join(dir, f'{package.id}.zip')
         infile = urlopen(package.url)
-        print(filename, infile)
         with open(filename, 'wb') as outfile:
             num_blocks = max(1, int(package.size) / (1024 * 16))
-            for block in itertools.count():
+            for block in tqdm(itertools.count(), desc=f'Downloading {package.id}'):
                 s = infile.read(1024 * 16)
                 outfile.write(s)
                 if not s:
                     break
         infile.close()
 
+        print(f'Unziping the package: {package.id}')
         zf = zipfile.ZipFile(filename)
         zf.extractall(dir)
 

@@ -1,3 +1,18 @@
+Metadata-Version: 2.1
+Name: nepali-embedding
+Version: 0.1.5
+Summary: UNKNOWN
+Home-page: https://github.com/pudasainishushant/nepali_embedding
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.5
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+License-File: AUTHORS.md
+
 # nepali_embedding
 
 Generate text embedding for nepali text
@@ -31,4 +46,6 @@ top_similar = sabda2vec_obj.get_most_similar("हार",5)
 # Get similarity between two tokens
 similarity_score = sabda2vec_obj.get_similarity_between_tokens("हार","पराजय")
 ```
+
+
 
