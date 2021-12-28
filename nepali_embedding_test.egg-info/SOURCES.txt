@@ -9,6 +9,8 @@ setup.py
 nepali_embedding/__init__.py
 nepali_embedding/config.py
 nepali_embedding/downloader.py
+nepali_embedding/nepBERT/__init__.py
+nepali_embedding/nepBERT/embedding_generator.py
 nepali_embedding/sabda2vec/__init__.py
 nepali_embedding/sabda2vec/inference.py
 nepali_embedding_test.egg-info/PKG-INFO
