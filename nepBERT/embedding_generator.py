@@ -7,8 +7,8 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM
 class NepBERT():
     def __init__(self) -> None:
         super().__init__()
-        self.tokenizer = AutoTokenizer.from_pretrained("Shushant/NepNewsBERT")
-        self.model = AutoModelForMaskedLM.from_pretrained("Shushant/NepNewsBERT",output_hidden_states=True)
+        self.tokenizer = AutoTokenizer.from_pretrained("Shushant/nepaliBERT")
+        self.model = AutoModelForMaskedLM.from_pretrained("Shushant/nepaliBERT",output_hidden_states=True)
     
     def get_word_embedding_bert(self,input_text):
         marked_text = " [CLS] " + input_text + " [SEP] "

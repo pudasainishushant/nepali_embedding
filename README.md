@@ -36,3 +36,10 @@ similarity_score = sabda2vec_obj.get_similarity_between_tokens("हार","प�
     sabda_to_vec_model: https://www.dropbox.com/s/xkd29spkozoavhk/sabda_to_vec_model?dl=0
     sabda_to_vec_model_md: https://www.dropbox.com/s/55m5q4h5ys1l4np/sabda_to_vec_model_md?dl=0
 ```
+## Loading embedding from nepBERT model
+```python
+from nepali_embedding.nepBERT.embedding_generator import NepBERT
+nepbert = NepBERT()
+test_sentence = 'आकाश भाई ज्ञानी मन्छे हो'
+embedding = nepbert.get_bert_embedding_sentence(test_sentence,)
+```
