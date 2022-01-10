@@ -6,7 +6,6 @@ from nepali_tokenizer import Tokenizer
 from gensim.models import Word2Vec
 from gensim.models import Word2Vec
 from sklearn.decomposition import PCA
-from matplotlib import pyplot
 
 
 tok = Tokenizer()

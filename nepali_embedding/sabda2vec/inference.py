@@ -4,7 +4,7 @@ sys.path.append("..")
 from gensim.models.keyedvectors import KeyedVectors
 from gensim.models import Word2Vec
 
-from config import word2vec_model_sm_path,word2vec_model_md_path
+from nepali_embedding.config import word2vec_model_sm_path,word2vec_model_md_path
 class Sabda2Vec():
     def __init__(self,model_name):
         """
