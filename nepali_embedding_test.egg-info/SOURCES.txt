@@ -9,6 +9,12 @@ setup.py
 nepali_embedding/__init__.py
 nepali_embedding/config.py
 nepali_embedding/downloader.py
+nepali_embedding/bakya2vec/__init__.py
+nepali_embedding/bakya2vec/bakya2vec_inference.py
+nepali_embedding/bakya2vec/nepali_data_preprocessor.py
+nepali_embedding/bakya2vec/train_bakya2vec.py
+nepali_embedding/bakya2vec/train_doc2vec_model.py
+nepali_embedding/bakya2vec/try_doc2vec_english.py
 nepali_embedding/nepBERT/__init__.py
 nepali_embedding/nepBERT/embedding_generator.py
 nepali_embedding/sabda2vec/__init__.py

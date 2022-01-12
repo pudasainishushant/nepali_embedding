@@ -28,7 +28,7 @@ class Package:
         return Package(**xml.attrib)
 
 class Downloader:
-    DEFAULT_URL = 'https://raw.githubusercontent.com/pudasainishushant/nepali_embedding/main/index.xml'
+    DEFAULT_URL = 'https://raw.githubusercontent.com/pudasainishushant/nepali_embedding/package_setup/nepali_embedding/index.xml'
 
     def __init__(self) -> None:
         self._url = self.DEFAULT_URL
