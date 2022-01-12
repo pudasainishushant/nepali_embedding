@@ -3,5 +3,6 @@
 <everest_nlp_data>
   <packages>
     <package id="sabda_to_vec_model" name="Sabda2Vec Model" author="" webpage="" license="MIT License" unzip="0" unzipped_size="63856890" size="45792965" subdir="" url="https://github.com/lappanchappan43/nepali_embedding_data/blob/main/sabda_to_vec_model.zip?raw=true" />
+    <package id="d2v_small" name="Bakya2Vec Large Model" author="" webpage="" license="MIT License" unzip="0" unzipped_size="315096703" size="61253517" subdir="" url="https://github.com/lappanchappan43/nepali_embedding_data/blob/main/bakya2vec_lg.zip?raw=true" />
   </packages>
 </everest_nlp_data>
